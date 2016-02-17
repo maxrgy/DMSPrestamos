@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                   assembly="PrestamosServicios"
+                   namespace="PrestamosServicios.Dominio"
+                   default-lazy="false">
+  <class name="Equipo" table="Equipo">
+    <id name="Serie" column="serie">
+    </id>
+    <property name="Estado" column="estado" />
+    <many-to-one name="Modelo" column="co_modelo" />
+  </class>
+</hibernate-mapping>
