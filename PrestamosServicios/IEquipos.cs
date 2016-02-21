@@ -1,4 +1,4 @@
-﻿using PrestamosServicios.Dominio;
+﻿    using PrestamosServicios.Dominio;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,16 +11,20 @@ namespace PrestamosServicios
     [ServiceContract]
     public interface IEquipos
     {
-        [FaultContract(typeof(ExcepcionEquipo))]
+        [FaultContract(typeof(EquipoRepetidoExcepcion))]
         [OperationContract]
-        Equipo CrearEquipo(int modelo, string estado, string serie);
+        Equipo CrearEquipo(string serie, string modelo, string estado);
         [OperationContract]
-        Equipo ObtenerEquipo(string serie);
+        Equipo ObtenerEquipo(int id);
         [OperationContract]
-        Equipo ModificarEquipo(int modelo, string estado, string serie);
+        Equipo ModificarEquipo(int id, string serie, string modelo, string estado);
         [OperationContract]
-        void EliminarEquipo(string serie);
+        void EliminarEquipo(int id);
         [OperationContract]
         List<Equipo> ListarEquipos();
+        [OperationContract]
+        List<Equipo> ListarDisponiblesModelo(string modelo);
+        [OperationContract]
+        Equipo ObtenerSerie(string serie);
     }
 }

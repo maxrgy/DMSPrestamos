@@ -120,7 +120,7 @@
       <DependentUpon>Autenticacion.svc</DependentUpon>
     </Compile>
     <Compile Include="Dominio\Equipo.cs" />
-    <Compile Include="Dominio\ExcepcionEquipo.cs" />
+    <Compile Include="Dominio\EquipoRepetidoExcepcion.cs" />
     <Compile Include="Dominio\PasswordIncorrectaExcepcion.cs" />
     <Compile Include="Dominio\Prestamo.cs" />
     <Compile Include="Dominio\UsuarioNoEncontradoExcepcion.cs" />

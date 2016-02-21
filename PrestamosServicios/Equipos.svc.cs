@@ -21,47 +21,39 @@ namespace PrestamosServicios
                 return equipoDAO;
             }
         }
-        private ModeloDAO modeloDAO = null;
-        private ModeloDAO ModeloDAO
-        {
-            get
-            {
-                if (modeloDAO == null)
-                    modeloDAO = new ModeloDAO();
-                return modeloDAO;
-            }
-        }
 
 
-        public Equipo CrearEquipo(int modelo, string estado, string serie)
+        public Equipo CrearEquipo(string serie, string modelo, string estado)
         {
-            if ("12345".Equals(estado))
+            if (EquipoDAO.ObtenerPorSerie(serie) != null)
             {
-                throw new FaultException<ExcepcionEquipo>(
-                    new ExcepcionEquipo()
-                    {
-                        Cod = "01",
-                        mensaje = "Has fallado"
-                    },
-                    new FaultReason("Validación de Negocio")
-                    );
+                throw new FaultException<EquipoRepetidoExcepcion>(
+                     new EquipoRepetidoExcepcion()
+                     {
+                         Codigo = "002",
+                         Mensaje = "El equipo ya existe"
+                     },
+                     new FaultReason("Validacion de negocio"));
             }
-            Modelo modeloExistente = ModeloDAO.Obtener(modelo);
             Equipo equipoACrear = new Equipo()
             {
-
-                Modelo = modeloExistente.Codigo,
-                Estado = estado,
-                Serie = serie
+                Serie = serie,
+                Modelo = modelo,
+                Estado = estado
 
             };
             return EquipoDAO.Crear(equipoACrear);
         }
 
-        public void EliminarEquipo(string serie)
+        public void EliminarEquipo(int id)
         {
-            Equipo equipoExistente = EquipoDAO.Obtener(serie);
-            EquipoDAO.Eliminar(equipoExistente);
+            Equipo equipoEncontrado = EquipoDAO.Obtener(id);
+            EquipoDAO.Eliminar(equipoEncontrado);
+        }
+
+        public List<Equipo> ListarDisponiblesModelo(string modelo)
+        {
+            return EquipoDAO.ListarPorModelo(modelo).ToList();
         }
 
         public List<Equipo> ListarEquipos()
@@ -69,21 +61,30 @@ namespace PrestamosServicios
             return EquipoDAO.ListarTodos().ToList();
         }
 
-        public Equipo ModificarEquipo(int modelo, string estado, string serie)
+        public Equipo ModificarEquipo(int id, string serie, string modelo, string estado)
         {
+
             Equipo equipoAModificar = new Equipo()
             {
+                Id = id,
+                Serie = serie,
                 Modelo = modelo,
-                Estado = estado,
-                Serie = serie
+                Estado = estado
 
             };
             return EquipoDAO.Modificar(equipoAModificar);
+
         }
 
-        public Equipo ObtenerEquipo(string serie)
+        public Equipo ObtenerEquipo(int id)
         {
-            return EquipoDAO.Obtener(serie);
+            return EquipoDAO.Obtener(id);
+        }
+
+        public Equipo ObtenerSerie(string serie)
+        {
+            return EquipoDAO.ObtenerPorSerie(serie);
         }
     }
 }
+

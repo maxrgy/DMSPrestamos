@@ -3,10 +3,12 @@
                    assembly="PrestamosServicios"
                    namespace="PrestamosServicios.Dominio"
                    default-lazy="false">
-  <class name="Equipo" table="Equipo">
-    <id name="Serie" column="serie">
+  <class name="Equipo" table="t_equipos">
+    <id name="Id" column="id">
+      <generator class="increment" />
     </id>
+    <property name="Serie" column="serie" />
+    <property name="Modelo" column="modelo" />
     <property name="Estado" column="estado" />
-    <many-to-one name="Modelo" column="co_modelo" />
   </class>
 </hibernate-mapping>
