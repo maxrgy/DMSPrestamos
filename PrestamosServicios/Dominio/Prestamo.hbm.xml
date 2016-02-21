@@ -3,16 +3,14 @@
                    assembly="PrestamosServicios"
                    namespace="PrestamosServicios.Dominio"
                    default-lazy="false">
-  <class name="Prestamo" table="T_Prestamo">
-    <id name="Codigo" column="co_prestamo">
+  <class name="Prestamo" table="t_prestamos">
+    <id name="Id" column="id">
       <generator class="increment" />
     </id>
-    <property name="Usuario" column="co_usuario" />
-    <property name="Cliente" column="co_cliente" />
-    <property name="FeDevolucion" column="fe_devolucion" />
-    <property name="FePrestamo" column="fe_prestamo" />
-    <property name="Estado" column="estado" />
+    <property name="Cliente" column="cliente" />
+    <property name="Equipo" column="equipo" />
+    <property name="Usuario" column="usuario" />
     <property name="Motivo" column="motivo" />
-    <many-to-one name="Equipo" column="co_equipo" />
+    <property name="Estado" column="estado" />
   </class>
 </hibernate-mapping>
