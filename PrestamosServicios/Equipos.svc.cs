@@ -25,7 +25,9 @@ namespace PrestamosServicios
 
         public Equipo CrearEquipo(string serie, string modelo, string estado)
         {
-            if (EquipoDAO.ObtenerPorSerie(serie) != null)
+            Equipo prueba = new Equipo();
+            Equipo equipoBuscado = EquipoDAO.ObtenerPorSerie(serie);
+            if (equipoBuscado.Serie != null)
             {
                 throw new FaultException<EquipoRepetidoExcepcion>(
                      new EquipoRepetidoExcepcion()
@@ -35,14 +37,16 @@ namespace PrestamosServicios
                      },
                      new FaultReason("Validacion de negocio"));
             }
-            Equipo equipoACrear = new Equipo()
-            {
-                Serie = serie,
-                Modelo = modelo,
-                Estado = estado
+            else {
+                Equipo equipoACrear = new Equipo()
+                {
+                    Serie = serie,
+                    Modelo = modelo,
+                    Estado = estado
 
-            };
-            return EquipoDAO.Crear(equipoACrear);
+                };
+                return EquipoDAO.Crear(equipoACrear);
+            }
         }
 
         public void EliminarEquipo(int id)
