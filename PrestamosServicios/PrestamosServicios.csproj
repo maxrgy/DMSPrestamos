@@ -13,7 +13,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>PrestamosServicios</RootNamespace>
     <AssemblyName>PrestamosServicios</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <WcfConfigValidationEnabled>True</WcfConfigValidationEnabled>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <UseIISExpress>true</UseIISExpress>
@@ -22,6 +22,7 @@
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
     <UseGlobalApplicationHostFile />
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -76,12 +77,12 @@
     <Reference Include="NHibernate">
       <HintPath>..\Librerias\NHibernate.dll</HintPath>
     </Reference>
+    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
-    <Reference Include="System.Core" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.EnterpriseServices" />
@@ -120,6 +121,7 @@
       <DependentUpon>Autenticacion.svc</DependentUpon>
     </Compile>
     <Compile Include="Dominio\Equipo.cs" />
+    <Compile Include="Dominio\EquipoEliminarExcepcion.cs" />
     <Compile Include="Dominio\EquipoRepetidoExcepcion.cs" />
     <Compile Include="Dominio\PasswordIncorrectaExcepcion.cs" />
     <Compile Include="Dominio\Prestamo.cs" />

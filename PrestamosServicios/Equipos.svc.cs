@@ -52,7 +52,38 @@ namespace PrestamosServicios
         public void EliminarEquipo(int id)
         {
             Equipo equipoEncontrado = EquipoDAO.Obtener(id);
-            EquipoDAO.Eliminar(equipoEncontrado);
+            if (equipoEncontrado.Estado == "P")
+            {
+                throw new FaultException<EquipoEliminarExcepcion>(
+                     new EquipoEliminarExcepcion()
+                     {
+                         Codigo = "003",
+                         Mensaje = "El equipo no se puede eliminar ya que está prestado"
+                     },
+                     new FaultReason("Validacion de negocio"));
+            }
+            else
+            {
+
+                if (equipoEncontrado.Estado == null)
+                {
+                    throw new FaultException<EquipoEliminarExcepcion>(
+                     new EquipoEliminarExcepcion()
+                     {
+                         Codigo = "004",
+                         Mensaje = "El equipo no se puede borrar ya que no existe"
+                     },
+                      new FaultReason("Validacion de negocio"));
+                }
+                else
+                {
+
+
+
+                    EquipoDAO.Eliminar(equipoEncontrado);
+                }
+            }
+
         }
 
         public List<Equipo> ListarDisponiblesModelo(string modelo)
