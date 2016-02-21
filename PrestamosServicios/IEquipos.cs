@@ -18,6 +18,7 @@ namespace PrestamosServicios
         Equipo ObtenerEquipo(int id);
         [OperationContract]
         Equipo ModificarEquipo(int id, string serie, string modelo, string estado);
+        [FaultContract(typeof(EquipoEliminarExcepcion))]
         [OperationContract]
         void EliminarEquipo(int id);
         [OperationContract]
