@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
+using System.ServiceModel.Web;
 using System.Text;
 
 namespace PrestamosServicios
@@ -12,15 +13,27 @@ namespace PrestamosServicios
     public interface IPrestamos
     {
         [OperationContract]
-        Prestamo CrearPrestamo(int codigo, string cliente, string equipo, int usuario, DateTime fePrestamo, DateTime feDevolucion, string motivo, string estado);
+        [WebInvoke(Method = "POST", UriTemplate = "Prestamos", ResponseFormat = WebMessageFormat.Json)]
+        Prestamo CrearPrestamo(Prestamo prestamoACrear);
         [OperationContract]
-        Prestamo ObtenerPrestamo(int codigo);
+        [WebInvoke(Method = "GET", UriTemplate = "Prestamos/{codigo}", ResponseFormat = WebMessageFormat.Json)]
+        Prestamo ObtenerPrestamo(string codigo);
         [OperationContract]
-        Prestamo ModificarPrestamo(int codigo, string cliente, string equipo, int usuario, DateTime fePrestamo, DateTime feDevolucion, string motivo, string estado);
+        [WebInvoke(Method = "PUT", UriTemplate = "Prestamos", ResponseFormat = WebMessageFormat.Json)]
+        Prestamo ModificarPrestamo(Prestamo prestamoAModificar);
         [OperationContract]
-        void EliminarPrestamo(int codigo);
+        [WebInvoke(Method = "DELETE", UriTemplate = "Prestamos/{codigo}", ResponseFormat = WebMessageFormat.Json)]
+        void EliminarPrestamo(string codigo);
         [OperationContract]
-        List<Prestamo> ListarPrestamos();
+        [WebInvoke(Method = "GET", UriTemplate = "Prestamos", ResponseFormat = WebMessageFormat.Json)]
+        List<Prestamo> ListarPrestamo();
+        [OperationContract]
+        [WebInvoke(Method = "GET", UriTemplate = "Prestamos/Usuario/{usuario}", ResponseFormat = WebMessageFormat.Json)]
+        List<Prestamo> ListarPorUsuario(string usuario);
+        [OperationContract]
+        [WebInvoke(Method = "GET", UriTemplate = "Prestamos/Equipo/{equipo}", ResponseFormat = WebMessageFormat.Json)]
+        Prestamo ObtenerPorEquipo(string equipo);
+
     }
 }
 

@@ -22,53 +22,44 @@ namespace PrestamosServicios
             }
         }
 
-        public Prestamo CrearPrestamo(int codigo, string cliente, string equipo, int usuario, DateTime fePrestamo, DateTime feDevolucion, string motivo, string estado)
+        public Prestamo CrearPrestamo(Prestamo prestamoACrear)
         {
-            Prestamo prestamoACrear = new Prestamo()
-            {
 
-                Codigo = codigo,
-                Cliente = cliente,
-                Equipo = equipo,
-                Usuario = usuario,
-                FePrestamo = fePrestamo,
-                FeDevolucion = feDevolucion,
-                Motivo = motivo,
-                Estado = estado
-            };
             return PrestamoDAO.Crear(prestamoACrear);
         }
 
-        public void EliminarPrestamo(int codigo)
+        public void EliminarPrestamo(string codigo)
         {
-            Prestamo prestamoExistente = PrestamoDAO.Obtener(codigo);
-            PrestamoDAO.Eliminar(prestamoExistente);
+            int id = Int32.Parse(codigo);
+            Prestamo prestamoEncontrado = PrestamoDAO.Obtener(id);
+            PrestamoDAO.Eliminar(prestamoEncontrado);
         }
 
-        public List<Prestamo> ListarPrestamos()
+        public List<Prestamo> ListarPorUsuario(string usuario)
+        {
+            return PrestamoDAO.ListarPorUsuario(usuario).ToList();
+        }
+
+        public List<Prestamo> ListarPrestamo()
         {
             return PrestamoDAO.ListarTodos().ToList();
         }
 
-        public Prestamo ModificarPrestamo(int codigo, string cliente, string equipo, int usuario, DateTime fePrestamo, DateTime feDevolucion, string motivo, string estado)
+        public Prestamo ModificarPrestamo(Prestamo prestamoAModificar)
         {
-            Prestamo prestamoAModificar = new Prestamo()
-            {
-                Codigo = codigo,
-                Cliente = cliente,
-                Equipo = equipo,
-                Usuario = usuario,
-                FePrestamo = fePrestamo,
-                FeDevolucion = feDevolucion,
-                Motivo = motivo,
-                Estado = estado
-            };
+
             return PrestamoDAO.Modificar(prestamoAModificar);
         }
 
-        public Prestamo ObtenerPrestamo(int codigo)
-        {   
-            return PrestamoDAO.Obtener(codigo);
+        public Prestamo ObtenerPorEquipo(string equipo)
+        {
+            return PrestamoDAO.ObtenerPorEquipo(equipo);
+        }
+
+        public Prestamo ObtenerPrestamo(string codigo)
+        {
+            int id = Int32.Parse(codigo);
+            return PrestamoDAO.Obtener(id);
         }
     }
 }

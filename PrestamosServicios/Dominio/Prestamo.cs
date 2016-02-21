@@ -9,21 +9,24 @@ namespace PrestamosServicios.Dominio
     [DataContract]
     public class Prestamo
     {
+
         [DataMember]
-        public int Codigo { get; set; }
+        public int Id { get; set; }
         [DataMember]
         public string Cliente { get; set; }
         [DataMember]
         public string Equipo { get; set; }
         [DataMember]
-        public int Usuario { get; set; }
-        [DataMember]
-        public DateTime FeDevolucion { get; set; }
-        [DataMember]
-        public DateTime FePrestamo { get; set; }
+        public string Usuario { get; set; }
+        // [DataMember]
+        //public DateTime F_devolucion { get; set; }
+        //[DataMember]
+        //public DateTime F_prestamo { get; set; }
         [DataMember]
         public string Motivo { get; set; }
         [DataMember]
         public string Estado { get; set; }
+
+
     }
 }
