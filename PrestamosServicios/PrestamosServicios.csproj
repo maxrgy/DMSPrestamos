@@ -97,12 +97,8 @@
   <ItemGroup>
     <EmbeddedResource Include="Dominio\Equipo.hbm.xml" />
     <Content Include="Autenticacion.svc" />
-    <Content Include="Categorias.svc" />
-    <EmbeddedResource Include="Dominio\Categoria.hbm.xml" />
-    <EmbeddedResource Include="Dominio\Modelo.hbm.xml" />
     <EmbeddedResource Include="Dominio\Prestamo.hbm.xml" />
     <Content Include="Equipos.svc" />
-    <Content Include="Modelos.svc" />
     <Content Include="Prestamos.svc" />
     <Content Include="scripts\ai.0.15.0-build58334.js" />
     <Content Include="scripts\ai.0.15.0-build58334.min.js" />
@@ -123,34 +119,20 @@
     <Compile Include="Autenticacion.svc.cs">
       <DependentUpon>Autenticacion.svc</DependentUpon>
     </Compile>
-    <Compile Include="Categorias.svc.cs">
-      <DependentUpon>Categorias.svc</DependentUpon>
-    </Compile>
-    <Compile Include="Dominio\Categoria.cs" />
     <Compile Include="Dominio\Equipo.cs" />
     <Compile Include="Dominio\ExcepcionEquipo.cs" />
-    <Compile Include="Dominio\Modelo.cs" />
     <Compile Include="Dominio\PasswordIncorrectaExcepcion.cs" />
     <Compile Include="Dominio\Prestamo.cs" />
-    <Compile Include="Dominio\Prueba.cs" />
-    <Compile Include="Dominio\User.cs" />
     <Compile Include="Dominio\UsuarioNoEncontradoExcepcion.cs" />
     <Compile Include="Equipos.svc.cs">
       <DependentUpon>Equipos.svc</DependentUpon>
     </Compile>
     <Compile Include="IAutenticacion.cs" />
-    <Compile Include="ICategorias.cs" />
     <Compile Include="IEquipos.cs" />
-    <Compile Include="IModelos.cs" />
     <Compile Include="IPrestamos.cs" />
-    <Compile Include="Modelos.svc.cs">
-      <DependentUpon>Modelos.svc</DependentUpon>
-    </Compile>
     <Compile Include="Persistencia\BaseDAO.cs" />
-    <Compile Include="Persistencia\CategoriaDAO.cs" />
     <Compile Include="Persistencia\ConexionUtil.cs" />
     <Compile Include="Persistencia\EquipoDAO.cs" />
-    <Compile Include="Persistencia\ModeloDAO.cs" />
     <Compile Include="Persistencia\NHibernateHelper.cs" />
     <Compile Include="Persistencia\PrestamoDAO.cs" />
     <Compile Include="Prestamos.svc.cs">
