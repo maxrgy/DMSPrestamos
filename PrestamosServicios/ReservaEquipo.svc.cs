@@ -17,7 +17,7 @@ namespace PrestamosServicios
     // NOTA: para iniciar el Cliente de prueba WCF para probar este servicio, seleccione RegistrarPrestamo.svc o RegistrarPrestamo.svc.cs en el Explorador de soluciones e inicie la depuración.
     public class ReservaEquipo : IReservaEquipo
     {
-        public void RegistrarPrestamo(string cliente, string equipo, string usuario, string motivo)
+        public string RegistrarPrestamo(string cliente, string equipo, string usuario, string motivo)
         {
 
             equipodisponibleWS.EquipoDisponibleClient proxy = new equipodisponibleWS.EquipoDisponibleClient();
@@ -69,6 +69,7 @@ namespace PrestamosServicios
 
 
             }
+            return mensaje;
         }
     }
 }

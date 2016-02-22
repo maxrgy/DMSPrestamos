@@ -13,6 +13,6 @@ namespace PrestamosServicios
     public interface IReservaEquipo
     {
         [OperationContract]
-         void RegistrarPrestamo(string cliente, string equipo, string usuario, string motivo);
+         string RegistrarPrestamo(string cliente, string equipo, string usuario, string motivo);
     }
 }
