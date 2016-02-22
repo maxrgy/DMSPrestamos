@@ -5,17 +5,18 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
 using PrestamosServicios.equipoWS;
+using PrestamosServicios.Dominio;
 
 namespace PrestamosServicios
 {
     public class EquipoDisponible : IEquipoDisponible
     {
 
-        public Equipo VerificarDisponibilidadEquipo(string modelo)
+        public equipoWS.Equipo VerificarDisponibilidadEquipo(string modelo)
         {
-            Equipo nuevo = new Equipo();
+            equipoWS.Equipo nuevo = new equipoWS.Equipo();
             equipoWS.EquiposClient proxy = new equipoWS.EquiposClient();
-            Equipo[] Lista = proxy.ListarDisponiblesModelo(modelo);
+            equipoWS.Equipo[] Lista = proxy.ListarDisponiblesModelo(modelo);
             if (Lista.Length > 2)
             {
                 nuevo = Lista[0];
