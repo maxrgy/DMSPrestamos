@@ -27,5 +27,7 @@ namespace PrestamosServicios
         List<Equipo> ListarDisponiblesModelo(string modelo);
         [OperationContract]
         Equipo ObtenerSerie(string serie);
+        [OperationContract]
+        List<string> ListarModelosEquipos();
     }
 }

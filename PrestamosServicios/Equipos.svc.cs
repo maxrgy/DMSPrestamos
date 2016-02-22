@@ -96,6 +96,11 @@ namespace PrestamosServicios
             return EquipoDAO.ListarTodos().ToList();
         }
 
+        public List<string> ListarModelosEquipos()
+        {
+            return EquipoDAO.ListarModelos();
+        }
+
         public Equipo ModificarEquipo(int id, string serie, string modelo, string estado)
         {
 

@@ -70,5 +70,29 @@ namespace PrestamosServicios.Persistencia
             return equipoEncontrado;
 
         }
+
+        public List<string> ListarModelos()
+        {
+            string agregar;
+            List<string> lista = new List<string>;
+            string sql = "SELECT modelo FROM t_equipos group by modelo ";
+            using (SqlConnection con = new SqlConnection(ConexionUtil.ObtenerCadena()))
+            {
+                con.Open();
+                using (SqlCommand com = new SqlCommand(sql, con))
+                {
+                    
+                    using (SqlDataReader resultado = com.ExecuteReader())
+                    {
+                        while (resultado.Read())
+                        {
+                            agregar = (string)resultado["modelo"];
+                            lista.Add(agregar);
+                        }
+                    }
+                }
+            }
+            return lista;
+        }
     }
 }
