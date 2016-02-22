@@ -65,9 +65,11 @@ namespace PrestamosServicios
 
                 }
             }
-            catch
+
+            catch (FaultException<equipodisponibleWS.EquipoDisponibilidadExcepcion> fe)
             {
-                mensaje = "Equipo no disponible";
+                mensaje = fe.Detail.Mensaje;
+
             }
             
             
