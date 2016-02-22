@@ -78,6 +78,7 @@
       <HintPath>..\Librerias\NHibernate.dll</HintPath>
     </Reference>
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Messaging" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -102,8 +103,22 @@
     <Content Include="EquipoDisponible.svc" />
     <Content Include="Equipos.svc" />
     <Content Include="Prestamos.svc" />
+    <Content Include="ReservaEquipo.svc" />
     <Content Include="scripts\ai.0.15.0-build58334.js" />
     <Content Include="scripts\ai.0.15.0-build58334.min.js" />
+    <None Include="Service References\equipodisponibleWS\EquipoDisponible.wsdl" />
+    <None Include="Service References\equipodisponibleWS\EquipoDisponible.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\equipodisponibleWS\EquipoDisponible1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\equipodisponibleWS\EquipoDisponible2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="Service References\equipodisponibleWS\PrestamosServicios.equipodisponibleWS.Equipo.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="Service References\equipoWS\Equipos.wsdl" />
     <None Include="Service References\equipoWS\Equipos.xsd">
       <SubType>Designer</SubType>
@@ -113,6 +128,12 @@
     </None>
     <None Include="Service References\equipoWS\Equipos2.xsd">
       <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\equipodisponibleWS\configuration91.svcinfo" />
+    <None Include="Service References\equipodisponibleWS\configuration.svcinfo" />
+    <None Include="Service References\equipodisponibleWS\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
     <Content Include="Service References\equipoWS\PrestamosServicios.equipoWS.Equipo.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -157,6 +178,7 @@
     <Compile Include="IEquipoDisponible.cs" />
     <Compile Include="IEquipos.cs" />
     <Compile Include="IPrestamos.cs" />
+    <Compile Include="IRegistrarPrestamo.cs" />
     <Compile Include="Persistencia\BaseDAO.cs" />
     <Compile Include="Persistencia\ConexionUtil.cs" />
     <Compile Include="Persistencia\EquipoDAO.cs" />
@@ -166,6 +188,14 @@
       <DependentUpon>Prestamos.svc</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReservaEquipo.svc.cs">
+      <DependentUpon>ReservaEquipo.svc</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\equipodisponibleWS\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Service References\equipoWS\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -206,6 +236,7 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
+    <WCFMetadataStorage Include="Service References\equipodisponibleWS\" />
     <WCFMetadataStorage Include="Service References\equipoWS\" />
     <WCFMetadataStorage Include="Service References\usuariosWS\" />
   </ItemGroup>
