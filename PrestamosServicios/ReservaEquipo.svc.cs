@@ -19,10 +19,10 @@ namespace PrestamosServicios
     {
         public string RegistrarPrestamo(string cliente, string equipo, string usuario, string motivo)
         {
-
+            string mensaje = "";
             equipodisponibleWS.EquipoDisponibleClient proxy = new equipodisponibleWS.EquipoDisponibleClient();
             
-            string mensaje = "";
+            
             try
             {
                 equipodisponibleWS.Equipo equiporecibido = proxy.VerificarDisponibilidadEquipo(equipo);
@@ -41,27 +41,27 @@ namespace PrestamosServicios
                 string prestamoJson = reader.ReadToEnd();
                 JavaScriptSerializer js = new JavaScriptSerializer();
                 Prestamo prestamoCreado = js.Deserialize<Prestamo>(prestamoJson);
-                if (prestamoCreado == null)
-                {
+                //if (prestamoCreado == null)
+                //{
                     mensaje = "Reserva no se realizó";
 
                     //envía
-                    string rutaCola = @".\private$\prestamospendientes";
-                    if (!MessageQueue.Exists(rutaCola))
-                        MessageQueue.Create(rutaCola);
-                    MessageQueue cola = new MessageQueue(rutaCola);
-                    Message msg = new Message();
-                    msg.Label = "Nueva nota";
-                    msg.Body = new Prestamo() { Cliente = cliente, Equipo = equiporecibido.Serie, Usuario = usuario, Motivo = motivo };
-                    cola.Send(mensaje);
+                //    string rutaCola = @".\private$\prestamospendientes";
+                //    if (!MessageQueue.Exists(rutaCola))
+                 //       MessageQueue.Create(rutaCola);
+                  //  MessageQueue cola = new MessageQueue(rutaCola);
+                  //  Message msg = new Message();
+                  //  msg.Label = "Nueva nota";
+                  //  msg.Body = new Prestamo() { Cliente = cliente, Equipo = equiporecibido.Serie, Usuario = usuario, Motivo = motivo };
+                  //  cola.Send(mensaje);
                     
 
-                } 
-                  else
-                {
+                //} 
+                 // else
+               // {
 
-                    mensaje = "Reserva realizada";
-                }
+                 //   mensaje = "Reserva realizada";
+               // }
 
             }
             catch {
