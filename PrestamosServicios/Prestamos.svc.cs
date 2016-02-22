@@ -6,6 +6,7 @@ using System.ServiceModel;
 using System.Text;
 using PrestamosServicios.Dominio;
 using PrestamosServicios.Persistencia;
+using System.Messaging;
 
 namespace PrestamosServicios
 {
@@ -24,7 +25,22 @@ namespace PrestamosServicios
 
         public Prestamo CrearPrestamo(Prestamo prestamoACrear)
         {
+            string rutaCola = @".\private$\prestamospendientes";
+            if (!MessageQueue.Exists(rutaCola))
+                MessageQueue.Create(rutaCola);
+            MessageQueue cola = new MessageQueue(rutaCola);
+            cola.Formatter = new XmlMessageFormatter(new Type[] { typeof(Prestamo) });
+            int cuenta = cola.GetAllMessages().Count();
+            if (cuenta != 0)
+            {
+                for (int i = 1; i <= cuenta; i++)
+                {
+                    Message mensaje = cola.Receive();
+                    Prestamo nota = (Prestamo)mensaje.Body;
 
+                }
+
+            }
             return PrestamoDAO.Crear(prestamoACrear);
         }
 

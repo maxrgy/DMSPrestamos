@@ -74,7 +74,7 @@ namespace PrestamosServicios.Persistencia
         public List<string> ListarModelos()
         {
             string agregar;
-            List<string> lista = new List<string>;
+            List<string> lista = new List<string>();
             string sql = "SELECT modelo FROM t_equipos group by modelo ";
             using (SqlConnection con = new SqlConnection(ConexionUtil.ObtenerCadena()))
             {
