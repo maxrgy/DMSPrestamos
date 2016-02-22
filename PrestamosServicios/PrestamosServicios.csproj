@@ -178,7 +178,7 @@
     <Compile Include="IEquipoDisponible.cs" />
     <Compile Include="IEquipos.cs" />
     <Compile Include="IPrestamos.cs" />
-    <Compile Include="IRegistrarPrestamo.cs" />
+    <Compile Include="IReservaEquipo.cs" />
     <Compile Include="Persistencia\BaseDAO.cs" />
     <Compile Include="Persistencia\ConexionUtil.cs" />
     <Compile Include="Persistencia\EquipoDAO.cs" />
