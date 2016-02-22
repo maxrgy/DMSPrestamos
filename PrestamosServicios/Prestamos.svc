@@ -1,1 +1,7 @@
-﻿<%@ ServiceHost Language="C#" Debug="true" Service="PrestamosServicios.Prestamos" CodeBehind="Prestamos.svc.cs" %>
+﻿<%@ ServiceHost 
+    Language="C#" 
+    Debug="true" 
+    Service="PrestamosServicios.Prestamos" 
+    CodeBehind="Prestamos.svc.cs" 
+    Factory="System.ServiceModel.Activation.WebServiceHostFactory"
+    %>
