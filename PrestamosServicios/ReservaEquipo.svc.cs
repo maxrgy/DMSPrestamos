@@ -21,47 +21,11 @@ namespace PrestamosServicios
         {
             string mensaje = "";
             equipodisponibleWS.EquipoDisponibleClient proxy = new equipodisponibleWS.EquipoDisponibleClient();
-            
-            
+            equipodisponibleWS.Equipo equiporecibido = new equipodisponibleWS.Equipo();
+
             try
             {
-                equipodisponibleWS.Equipo equiporecibido = proxy.VerificarDisponibilidadEquipo(equipo);
-                string estado = "R";
-                string postdata = "{\"Cliente\":\"" + cliente + "\",\"Equipo\":\"" + equiporecibido.Serie + "\",\"Usuario\":\"" + usuario + "\",\"Motivo\":\"" + motivo + "\",\"Estado\":\"" + estado + "\"}"; //JSON
-                byte[] data = Encoding.UTF8.GetBytes(postdata);
-                HttpWebRequest req = (HttpWebRequest)WebRequest
-                    .Create("http://dmsprestamosapphb.com/Prestamos.svc/Prestamos");
-                req.Method = "POST";
-                req.ContentLength = data.Length;
-                req.ContentType = "application/json";
-                var reqStream = req.GetRequestStream();
-                reqStream.Write(data, 0, data.Length);
-                HttpWebResponse res = (HttpWebResponse)req.GetResponse();
-                StreamReader reader = new StreamReader(res.GetResponseStream());
-                string prestamoJson = reader.ReadToEnd();
-                JavaScriptSerializer js = new JavaScriptSerializer();
-                Prestamo prestamoCreado = js.Deserialize<Prestamo>(prestamoJson);
-                //if (prestamoCreado == null)
-                //{
-                    mensaje = "Reserva no se realizó";
-
-                    //envía
-                //    string rutaCola = @".\private$\prestamospendientes";
-                //    if (!MessageQueue.Exists(rutaCola))
-                 //       MessageQueue.Create(rutaCola);
-                  //  MessageQueue cola = new MessageQueue(rutaCola);
-                  //  Message msg = new Message();
-                  //  msg.Label = "Nueva nota";
-                  //  msg.Body = new Prestamo() { Cliente = cliente, Equipo = equiporecibido.Serie, Usuario = usuario, Motivo = motivo };
-                  //  cola.Send(mensaje);
-                    
-
-                //} 
-                 // else
-               // {
-
-                 //   mensaje = "Reserva realizada";
-               // }
+             equiporecibido = proxy.VerificarDisponibilidadEquipo(equipo);
 
             }
             catch {
@@ -69,6 +33,43 @@ namespace PrestamosServicios
                 mensaje = "Que estas haciendo";
 
             }
+            string estado = "R";
+            string postdata = "{\"Cliente\":\"" + cliente + "\",\"Equipo\":\"" + equiporecibido.Serie + "\",\"Usuario\":\"" + usuario + "\",\"Motivo\":\"" + motivo + "\",\"Estado\":\"" + estado + "\"}"; //JSON
+            byte[] data = Encoding.UTF8.GetBytes(postdata);
+            HttpWebRequest req = (HttpWebRequest)WebRequest
+                .Create("http://dmsprestamosapphb.com/Prestamos.svc/Prestamos");
+            req.Method = "POST";
+            req.ContentLength = data.Length;
+            req.ContentType = "application/json";
+            var reqStream = req.GetRequestStream();
+            reqStream.Write(data, 0, data.Length);
+            HttpWebResponse res = (HttpWebResponse)req.GetResponse();
+            StreamReader reader = new StreamReader(res.GetResponseStream());
+            string prestamoJson = reader.ReadToEnd();
+            JavaScriptSerializer js = new JavaScriptSerializer();
+            Prestamo prestamoCreado = js.Deserialize<Prestamo>(prestamoJson);
+            //if (prestamoCreado == null)
+            //{
+            mensaje = "Reserva no se realizó";
+
+            //envía
+            //    string rutaCola = @".\private$\prestamospendientes";
+            //    if (!MessageQueue.Exists(rutaCola))
+            //       MessageQueue.Create(rutaCola);
+            //  MessageQueue cola = new MessageQueue(rutaCola);
+            //  Message msg = new Message();
+            //  msg.Label = "Nueva nota";
+            //  msg.Body = new Prestamo() { Cliente = cliente, Equipo = equiporecibido.Serie, Usuario = usuario, Motivo = motivo };
+            //  cola.Send(mensaje);
+
+
+            //} 
+            // else
+            // {
+
+            //   mensaje = "Reserva realizada";
+            // }
+
             return mensaje;
         }
     }
