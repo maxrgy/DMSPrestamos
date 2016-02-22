@@ -25,51 +25,51 @@ namespace PrestamosServicios
 
             try
             {
-             equiporecibido = proxy.VerificarDisponibilidadEquipo(equipo);
-                string estado = "R";
-                string postdata = "{\"Cliente\":\"" + cliente + "\",\"Equipo\":\"" + equiporecibido.Serie + "\",\"Usuario\":\"" + usuario + "\",\"Motivo\":\"" + motivo + "\",\"Estado\":\"" + estado + "\"}"; //JSON
-                byte[] data = Encoding.UTF8.GetBytes(postdata);
-                HttpWebRequest req = (HttpWebRequest)WebRequest
-                    .Create("http://dmsprestamos.apphb.com/Prestamos.svc/Prestamos");
-                req.Method = "POST";
-                req.ContentLength = data.Length;
-                req.ContentType = "application/json";
-                var reqStream = req.GetRequestStream();
-                reqStream.Write(data, 0, data.Length);
-                HttpWebResponse res = (HttpWebResponse)req.GetResponse();
-                StreamReader reader = new StreamReader(res.GetResponseStream());
-                string prestamoJson = reader.ReadToEnd();
-                JavaScriptSerializer js = new JavaScriptSerializer();
-                Prestamo prestamoCreado = js.Deserialize<Prestamo>(prestamoJson);
-                //if (prestamoCreado == null)
-                //{
-                mensaje = "Reserva no se realizó";
+                equiporecibido = proxy.VerificarDisponibilidadEquipo(equipo);
+                try
+                {
+                    string estado = "R";
+                    string postdata = "{\"Cliente\":\"" + cliente + "\",\"Equipo\":\"" + equiporecibido.Serie + "\",\"Usuario\":\"" + usuario + "\",\"Motivo\":\"" + motivo + "\",\"Estado\":\"" + estado + "\"}"; //JSON
+                    byte[] data = Encoding.UTF8.GetBytes(postdata);
+                    HttpWebRequest req = (HttpWebRequest)WebRequest
+                        .Create("http://dmsprestamos.apphb.com/Prestamos.svc/Prestamos");
+                    req.Method = "POST";
+                    req.ContentLength = data.Length;
+                    req.ContentType = "application/json";
+                    var reqStream = req.GetRequestStream();
+                    reqStream.Write(data, 0, data.Length);
+                    HttpWebResponse res = (HttpWebResponse)req.GetResponse();
+                    StreamReader reader = new StreamReader(res.GetResponseStream());
+                    string prestamoJson = reader.ReadToEnd();
+                    JavaScriptSerializer js = new JavaScriptSerializer();
+                    Prestamo prestamoCreado = js.Deserialize<Prestamo>(prestamoJson);
 
-                //envía
-                //    string rutaCola = @".\private$\prestamospendientes";
-                //    if (!MessageQueue.Exists(rutaCola))
-                //       MessageQueue.Create(rutaCola);
-                //  MessageQueue cola = new MessageQueue(rutaCola);
-                //  Message msg = new Message();
-                //  msg.Label = "Nueva nota";
-                //  msg.Body = new Prestamo() { Cliente = cliente, Equipo = equiporecibido.Serie, Usuario = usuario, Motivo = motivo };
-                //  cola.Send(mensaje);
+                    mensaje = "Reserva realizada";
 
+                   
 
-                //} 
-                // else
-                // {
+                }
+                catch
+                {
 
-                //   mensaje = "Reserva realizada";
-                // }
+                    //envía
+                    string rutaCola = @".\private$\prestamospendientes";
+                    if (!MessageQueue.Exists(rutaCola))
+                        MessageQueue.Create(rutaCola);
+                    MessageQueue cola = new MessageQueue(rutaCola);
+                    Message msg = new Message();
+                    msg.Label = "Nueva nota";
+                    msg.Body = new Prestamo() { Cliente = cliente, Equipo = equiporecibido.Serie, Usuario = usuario, Motivo = motivo };
+                    cola.Send(mensaje);
+                    mensaje = "Reserva no se realizó";
 
-
+                }
             }
-            catch {
-
-                mensaje = "Que estas haciendo";
-
+            catch
+            {
+                mensaje = "Equipo no disponible";
             }
+            
             
             return mensaje;
         }
