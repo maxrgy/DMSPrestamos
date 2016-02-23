@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="f27aba9f-626e-4016-93cb-d82971d21067" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://dmsprestamos.apphb.com/ReservaEquipo.svc?wsdl" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="ReservaEquipo.xsd" MetadataType="Schema" ID="3e6b59e3-ab18-4f8c-9fe0-f703352994e5" SourceId="1" SourceUrl="http://dmsprestamos.apphb.com/ReservaEquipo.svc?xsd=xsd0" />
+    <MetadataFile FileName="ReservaEquipo.wsdl" MetadataType="Wsdl" ID="28d34f25-ec4a-4258-9bd6-af137f66455c" SourceId="1" SourceUrl="http://dmsprestamos.apphb.com/ReservaEquipo.svc?wsdl" />
+    <MetadataFile FileName="ReservaEquipo1.xsd" MetadataType="Schema" ID="41a3e2ce-152c-4f74-acd4-1174c6da174b" SourceId="1" SourceUrl="http://dmsprestamos.apphb.com/ReservaEquipo.svc?xsd=xsd1" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

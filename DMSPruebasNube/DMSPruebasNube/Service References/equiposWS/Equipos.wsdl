@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="Equipos" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://dmsprestamos.apphb.com/Equipos.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://dmsprestamos.apphb.com/Equipos.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/PrestamosServicios.Dominio" />
+      <xsd:import schemaLocation="http://dmsprestamos.apphb.com/Equipos.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IEquipos_CrearEquipo_InputMessage">
+    <wsdl:part name="parameters" element="tns:CrearEquipo" />
+  </wsdl:message>
+  <wsdl:message name="IEquipos_CrearEquipo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CrearEquipoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEquipos_CrearEquipo_ExcepcionEquipoFault_FaultMessage">
+    <wsdl:part xmlns:q1="http://schemas.datacontract.org/2004/07/PrestamosServicios.Dominio" name="detail" element="q1:ExcepcionEquipo" />
+  </wsdl:message>
+  <wsdl:message name="IEquipos_ObtenerEquipo_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerEquipo" />
+  </wsdl:message>
+  <wsdl:message name="IEquipos_ObtenerEquipo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerEquipoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEquipos_ModificarEquipo_InputMessage">
+    <wsdl:part name="parameters" element="tns:ModificarEquipo" />
+  </wsdl:message>
+  <wsdl:message name="IEquipos_ModificarEquipo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ModificarEquipoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEquipos_EliminarEquipo_InputMessage">
+    <wsdl:part name="parameters" element="tns:EliminarEquipo" />
+  </wsdl:message>
+  <wsdl:message name="IEquipos_EliminarEquipo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EliminarEquipoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEquipos_ListarEquipos_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarEquipos" />
+  </wsdl:message>
+  <wsdl:message name="IEquipos_ListarEquipos_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarEquiposResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IEquipos">
+    <wsdl:operation name="CrearEquipo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEquipos/CrearEquipo" message="tns:IEquipos_CrearEquipo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEquipos/CrearEquipoResponse" message="tns:IEquipos_CrearEquipo_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IEquipos/CrearEquipoExcepcionEquipoFault" name="ExcepcionEquipoFault" message="tns:IEquipos_CrearEquipo_ExcepcionEquipoFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerEquipo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEquipos/ObtenerEquipo" message="tns:IEquipos_ObtenerEquipo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEquipos/ObtenerEquipoResponse" message="tns:IEquipos_ObtenerEquipo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ModificarEquipo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEquipos/ModificarEquipo" message="tns:IEquipos_ModificarEquipo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEquipos/ModificarEquipoResponse" message="tns:IEquipos_ModificarEquipo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EliminarEquipo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEquipos/EliminarEquipo" message="tns:IEquipos_EliminarEquipo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEquipos/EliminarEquipoResponse" message="tns:IEquipos_EliminarEquipo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarEquipos">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEquipos/ListarEquipos" message="tns:IEquipos_ListarEquipos_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEquipos/ListarEquiposResponse" message="tns:IEquipos_ListarEquipos_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IEquipos" type="tns:IEquipos">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="CrearEquipo">
+      <soap:operation soapAction="http://tempuri.org/IEquipos/CrearEquipo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ExcepcionEquipoFault">
+        <soap:fault use="literal" name="ExcepcionEquipoFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerEquipo">
+      <soap:operation soapAction="http://tempuri.org/IEquipos/ObtenerEquipo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ModificarEquipo">
+      <soap:operation soapAction="http://tempuri.org/IEquipos/ModificarEquipo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EliminarEquipo">
+      <soap:operation soapAction="http://tempuri.org/IEquipos/EliminarEquipo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarEquipos">
+      <soap:operation soapAction="http://tempuri.org/IEquipos/ListarEquipos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Equipos">
+    <wsdl:port name="BasicHttpBinding_IEquipos" binding="tns:BasicHttpBinding_IEquipos">
+      <soap:address location="http://dmsprestamos.apphb.com/Equipos.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

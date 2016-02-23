@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="1e857eb3-9fe2-4435-aaac-9d714b9d88bc" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://dmsprestamos.apphb.com/Equipos.svc?wsdl" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="Equipos.xsd" MetadataType="Schema" ID="349126f6-dc09-4d25-80b9-fe640d011fb8" SourceId="1" SourceUrl="http://dmsprestamos.apphb.com/Equipos.svc?xsd=xsd1" />
+    <MetadataFile FileName="Equipos1.xsd" MetadataType="Schema" ID="4de5752b-76c7-48af-b8c0-857a36d75fe9" SourceId="1" SourceUrl="http://dmsprestamos.apphb.com/Equipos.svc?xsd=xsd0" />
+    <MetadataFile FileName="Equipos2.xsd" MetadataType="Schema" ID="6dcc25f5-1f35-4807-b411-db1c2bbf9683" SourceId="1" SourceUrl="http://dmsprestamos.apphb.com/Equipos.svc?xsd=xsd2" />
+    <MetadataFile FileName="Equipos.wsdl" MetadataType="Wsdl" ID="cc2f4321-3554-4503-8524-c6884afa9412" SourceId="1" SourceUrl="http://dmsprestamos.apphb.com/Equipos.svc?wsdl" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

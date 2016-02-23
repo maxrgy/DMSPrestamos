@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://dmsprestamos.apphb.com/Equipos.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/PrestamosServicios.Dominio" />
+  <xs:element name="CrearEquipo">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="serie" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="modelo" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="estado" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CrearEquipoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/PrestamosServicios.Dominio" minOccurs="0" name="CrearEquipoResult" nillable="true" type="q1:Equipo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerEquipo">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="id" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerEquipoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/PrestamosServicios.Dominio" minOccurs="0" name="ObtenerEquipoResult" nillable="true" type="q2:Equipo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ModificarEquipo">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="id" type="xs:int" />
+        <xs:element minOccurs="0" name="serie" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="modelo" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="estado" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ModificarEquipoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/PrestamosServicios.Dominio" minOccurs="0" name="ModificarEquipoResult" nillable="true" type="q3:Equipo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EliminarEquipo">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="id" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EliminarEquipoResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarEquipos">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarEquiposResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/PrestamosServicios.Dominio" minOccurs="0" name="ListarEquiposResult" nillable="true" type="q4:ArrayOfEquipo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarDisponiblesModelo">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="modelo" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarDisponiblesModeloResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/PrestamosServicios.Dominio" minOccurs="0" name="ListarDisponiblesModeloResult" nillable="true" type="q5:ArrayOfEquipo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerSerie">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="serie" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerSerieResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/PrestamosServicios.Dominio" minOccurs="0" name="ObtenerSerieResult" nillable="true" type="q6:Equipo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
