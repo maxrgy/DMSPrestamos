@@ -53,14 +53,14 @@ namespace PrestamosServicios
                 {
 
                     //envía
-                    string rutaCola = @".\private$\prestamospendientes";
-                    if (!MessageQueue.Exists(rutaCola))
-                        MessageQueue.Create(rutaCola);
-                    MessageQueue cola = new MessageQueue(rutaCola);
-                    Message msg = new Message();
-                    msg.Label = "Nueva nota";
-                    msg.Body = new Prestamo() { Cliente = cliente, Equipo = equiporecibido.Serie, Usuario = usuario, Motivo = motivo };
-                    cola.Send(mensaje);
+                    //string rutaCola = @".\private$\prestamospendientes";
+                    //if (!MessageQueue.Exists(rutaCola))
+                    //    MessageQueue.Create(rutaCola);
+                    //MessageQueue cola = new MessageQueue(rutaCola);
+                    //Message msg = new Message();
+                    //msg.Label = "Nueva nota";
+                    //msg.Body = new Prestamo() { Cliente = cliente, Equipo = equiporecibido.Serie, Usuario = usuario, Motivo = motivo };
+                    //cola.Send(mensaje);
                     mensaje = "Reserva no se realizó";
 
                 }
