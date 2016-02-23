@@ -25,7 +25,7 @@ namespace PrestamosServicios
 
         public Prestamo CrearPrestamo(Prestamo prestamoACrear)
         {
-            string rutaCola = @".\private$\prestamospendientes";
+            /*string rutaCola = @".\private$\prestamospendientes";
             if (!MessageQueue.Exists(rutaCola))
                 MessageQueue.Create(rutaCola);
             MessageQueue cola = new MessageQueue(rutaCola);
@@ -40,7 +40,7 @@ namespace PrestamosServicios
 
                 }
 
-            }
+            }*/
             return PrestamoDAO.Crear(prestamoACrear);
         }
 
